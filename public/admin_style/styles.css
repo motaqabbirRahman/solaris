@@ -27,8 +27,9 @@
     text-decoration: none;
 }
 
+
 .sidebar{
-    width: 345px;
+    width: 250px;
     position: fixed;
     left: 0;
     right: 0;
@@ -112,4 +113,29 @@ header label span{
 .user-wrapper small{
     display: inline-block;
     color: var(--text-color);
+}
+
+/*create option*/
+
+.box.span12{
+  position:relative; /* or absolute */
+  top: 30%;
+  left: 30%;
+  width: 500px;
+  padding: 50px;
+  margin: 20px;
+}
+.box-header{
+    padding-left: 1rem;
+    display: block;
+    color: #ff672e;
+    font-size: 1.1rem;
+}
+.btn{
+    background: var(--main-color);
+    padding: 15px 24px;
+    color: var(--bg-color);
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.5rem;  
 }

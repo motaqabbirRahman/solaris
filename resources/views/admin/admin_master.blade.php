@@ -8,8 +8,7 @@
     <!--link to css-->
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    
-    <link rel="stylesheet" href="{{asset('admin/styles.css')}}">  
+    <link rel="stylesheet" href="{{asset('admin_style/styles.css')}}">  
 </head>
 <body>
     <div class="sidebar">
@@ -20,34 +19,34 @@
         <div class="sidebar-menu">
            <ul>
             <li>
-                <a href="#" class="active"><span class="las la-igloo">
+                <a href="{{url('/dashboard')}}" class="active"><span class="las la-igloo">
                     <span>Dashboard</span>
-                </a>
-                
+                </a>   
             </li>
              <li>
                 <a href="" class="las la-users">
                     <span>Customers</span>
-                </a>
-                
+                </a>   
             </li>
              <li>
                 <a href="" class="las la-shipping-fast">
                     <span>Orders</span>
-                </a>
-                
+                </a>   
             </li>
              <li>
                 <a href="" class="las la-receipt">
                     <span>Inventory</span>
-                </a>
-                
+                </a>   
             </li>
              <li>
                 <a href="" class="las la-user-circle">
                     <span>Accountes</span>
-                </a>
-                
+                </a>  
+            </li>
+             <li>
+                <a href="{{url('/categories/create')}}" class="las la-user-circle">
+                    <span>Add Category</span>
+                </a>  
             </li>
            </ul>
         </div>
@@ -70,7 +69,9 @@
                <img src="../img/admin.jpg" width="30px" height="30px" alt="">
                 <div>
                     <h4>Penguin Publisher</h4>
-                    <small>Super admin</small>
+                    <small>
+                        {{Session::get('admin_name')}}
+                    </small>
                 </div>
             </div>
         </header>
@@ -83,6 +84,8 @@
             </div>
         </main>
     </div>
-    
+
+   @yield('dashboard')
+
 </body>
 </html>
