@@ -8,7 +8,17 @@
             <!-- Nav list -->
             <ul class="navbar">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#category">Category</a></li>
+                <li>
+                    <!-- <a href="#category">Category</a> -->
+                    <div class="dropdown">
+                    <button class="dropbtn">Category</button>
+                      <div class="dropdown-content">
+                        @foreach($categories as $category)
+                        <a class="dd-option" href="#">{{$category->name}}</a>
+                        @endforeach
+                      </div>
+                    </div>
+                </li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
@@ -62,10 +72,18 @@
                     <input type="password" name="" id="" placeholder="Password" requried>
                     <a href="#">Forget Passsword?</a>
                     <input type="submit" value="Log In" class="btn">
+                    <!-- google sign-up -->
+                    <div class="google-btn">
+                     <div class="google-icon-wrapper">
+                      <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+                     </div>
+                     <!-- <input type="submit" value="Sign in with google" class="btn-text"> -->
+                     <p class="btn-text" type="submit"><b>Sign in with google</b></p>
+                    </div>
                     <a href="signup.html">Create Account</a>
                 </form>
             </div>
         </div>
         <div class="search-box">
                 <input type="search" placeholder="Search Here....">
-</div>
+        </div>

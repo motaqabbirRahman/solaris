@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories= Category::all();
+        return view('admin.category.index',compact('categories'));
     }
 
     /**
@@ -34,28 +35,41 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category= new Category;
-        $category->id= $request->id;
-        $category->name= $request->name;
-        $category->description= $request->description;
-        if($request->hasFile('image')){
-            // $path = $request->file('image')->getRealPath();
-            // $image = file_get_contents('$path');
-            // $base64 = bse64_encode($image);
-            // $category->image = $base64;
-            // $file= $request->file('image');
-            // $extension= $file->getClientOriginalExtension();
-            // $filename=rand(1000, 9999) . '.' . $extention;
-            $filename=$request->file('image')->getRealPath();
-            dd($filename);
-            $file->move('category', $filename);
-            $category->image= $filename;
-        }
-    //    dd($filename);
-        // dd($request->file('image'));
-        $category->save();
-        return redirect()->back()->with('mesage','category successfully created');
+    //   dd($request->all(),$request->has('image'));
+      $category = new Category;
+      $category->id = $request->category;
+      $category->name = $request->name;
+      $category->description = $request->description;
+      $category->image = $request->image->store('category');
+      
+    //   if($request->has('image')){
+    //         // dd($request->image);
+    //         $file = $request->image;
+    //         $extension = $file->getClientOriginalExtension();
+    //         $filename = time().'.'.$extension;
+    //         $file->move('category',$filename);
+    //         $category->image = $filename; 
+    //   }
+      $category->save();
+      return redirect()->back()->with('message','Successfully Created');
+    //   dd($category->image);
+    //   $category->image= $image->storeAs('category', 'image.jpg'); // it return the path at which the file is now saved
+    //   dd(cagegory->image);
+      
+    //   dd($request->image);
+    //   if ($request->hasFile('image')){
+    //     // $file = $request->file('image');
+    //     // $extension = $file->getClientOriginalExtension();
+    //     // $filename = time().'.'.$extension;
+    //     // $file->move('category',$filename);
+    //     // // $category->image = $filename;
+    //     // $category->image = $request->image
+    //   }
+      
+    //   return rediret()->back()->with('message','category successfully created');
 
+
+      
     }
 
 
@@ -76,9 +90,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -88,9 +102,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $update=$category->update([
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'image'=>$request->file('image')->store('category')
+        ]);
+        if($update)
+         return redirect('/categories')->with('message','category updated');
     }
 
     /**

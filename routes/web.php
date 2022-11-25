@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +28,14 @@ Route::get('/admin', [AdminController::class,'index']);
 Route::get('/dashboard',[SuperAdminController::class,'dashboard']);
 Route::post('/admin-dashboard',[AdminController::class,'show_dashboard']);
 Route::get('/logout',[SuperAdminController::class,'logout']);
-
+//products
+Route::resource('/products',ProductController::class);
+Route::get('/product-status{product}',[ProductController::class,'change_status']);
 
 //Category.Resource route
-Route::resource('/categories/',CategoryController::class);
+Route::resource('/categories',CategoryController::class);
 // Frontend Routes
 Route::get('/',[HomeController::class,'index']);
+Route::get('/view-details{id}',[HomeController::class,'view_details']);
 
+// Cart

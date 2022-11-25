@@ -22,10 +22,11 @@
  </header>
     <!-- Header Ends -->
     <!-- Product Section Starts -->
-    @yield('product')
+    @yield('product_content')
     <!-- Product Section Ends -->
-    
+    @yield('content')
     <!-- js -->
    <script src="{{('js/main.js')}}"></script>
  </body>
  
+

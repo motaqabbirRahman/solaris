@@ -48,27 +48,30 @@
                     <span>Add Category</span>
                 </a>  
             </li>
+            <li>
+                <a href="{{url('/categories')}}" class="las la-user-circle">
+                    <span>All Category</span>
+                </a>  
+            </li>
+            <li>
+                <a href="{{url('/products/create')}}" class="las la-user-circle">
+                    <span>Add Product</span>
+                </a>  
+            </li>
+            <li>
+                <a href="{{url('/products')}}" class="las la-user-circle">
+                    <span>All Product</span>
+                </a>  
+            </li>
            </ul>
         </div>
     </div>
     <!--  -->
     <div class="main-content">
         <header>
-            <h1>
-                <label for="">
-                    <span class="las la-bars"></span>
-                </label>
-                Dashboard
-            </h1>
-            <div class="search-wrapper">
-                <span class="las la-search">
-                  <input type="serach" placeholder="Search...">
-                </span>
-            </div>
             <div class="user-wrapper">
                <img src="../img/admin.jpg" width="30px" height="30px" alt="">
                 <div>
-                    <h4>Penguin Publisher</h4>
                     <small>
                         {{Session::get('admin_name')}}
                     </small>
